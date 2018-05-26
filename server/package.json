@@ -1,0 +1,32 @@
+{
+  "name": "tubeqserver",
+  "version": "0.0.1",
+  "description": "Api server for TubeQ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/defree/TubeQueue.git"
+  },
+  "keywords": [
+    "TubeQueue",
+    "server"
+  ],
+  "author": "Esa Aaltonen",
+  "license": "private",
+  "bugs": {
+    "url": "https://github.com/defree/TubeQueue/issues"
+  },
+  "homepage": "https://github.com/defree/TubeQueue#readme",
+  "devDependencies": {
+    "@types/bell": "^9.1.0",
+    "@types/hapi": "^17.0.12",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "bell": "^9.3.0",
+    "hapi": "^17.5.0"
+  }
+}

@@ -1,0 +1,14 @@
+# Installed node modules
+node_modules
+
+# Built js files
+build
+
+# Environmental variables
+.env
+
+# VSCode settings
+.vscode
+
+# Logs
+*.log
