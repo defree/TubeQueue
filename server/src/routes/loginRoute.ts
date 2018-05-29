@@ -1,12 +1,28 @@
 import * as Hapi from 'hapi';
-// Add the route
+
+interface IGoogleCred {
+  profile: {
+    id: string;
+    displayName: string;
+    email: string;
+  }
+}
+
 const loginRoute = (server: Hapi.Server) => {
   server.route({
-    method:'GET',
-    path:'/hello',
-    handler:function(request,h) {
+    method: 'GET',
+    path: '/login',
+    options: {
+      auth: 'google',
+      handler: (req, h) => {
+          if (!req.auth.isAuthenticated) {
+              return `Authentication failed due to: ${req.auth.error.message}`;
+          }
+          const credentials = req.auth.credentials as IGoogleCred;
+          console.log(credentials.profile.id);
 
-        return'hellfffffo world';
+          return h.redirect('http://localhost:15556/');
+      }
     }
   });
 };
