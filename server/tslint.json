@@ -14,14 +14,14 @@
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
-    "no-trailing-whitespace": false,
+    "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-invalid-template-strings": true,
     "object-literal-key-quotes": [
       true,
       "consistent-as-needed"
     ],
-    "prefer-method-signature": true,
+    "prefer-method-signature": false,
     "prefer-template": true,
     "semicolon": [
       "never"
