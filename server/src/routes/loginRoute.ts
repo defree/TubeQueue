@@ -1,4 +1,7 @@
-import * as Hapi from 'hapi';
+import * as hapi from 'hapi';
+import * as mysql from 'mysql';
+
+import { checkSession } from '../auth/session';
 
 interface IGoogleCred {
   profile: {
@@ -8,7 +11,7 @@ interface IGoogleCred {
   }
 }
 
-const loginRoute = (server: Hapi.Server) => {
+const loginRoute = (server: hapi.Server, dbConn: mysql.Connection) => {
   server.route({
     method: 'GET',
     path: '/login',
@@ -20,6 +23,8 @@ const loginRoute = (server: Hapi.Server) => {
           }
           const credentials = req.auth.credentials as IGoogleCred;
           console.log(credentials.profile.id);
+
+
 
           return h.redirect('http://localhost:15556/');
       }

@@ -25,11 +25,13 @@
   "devDependencies": {
     "@types/bell": "^9.1.0",
     "@types/hapi": "^17.0.12",
+    "@types/mysql": "^2.15.5",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {
     "bell": "^9.3.0",
-    "hapi": "^17.5.0"
+    "hapi": "^17.5.0",
+    "mysql": "^2.15.0"
   }
 }

@@ -8,7 +8,8 @@ const config = {
   filePaths: {
     dev: 'C:/ProgramData/TubeQueue/serverConfig.json',
     prod: ''
-  }
+  },
+  mysqlDB: 'tubeQueue'
 };
 
 export default config;
