@@ -1,6 +1,7 @@
 import * as hapi from 'hapi';
+import * as yar from 'yar';
 import * as bell from 'bell';
-import * as mysql from 'mysql';
+import * as mysql from 'promise-mysql';
 
 import config from './config';
 
@@ -21,25 +22,37 @@ const server = new hapi.Server({
   port: config.port
 });
 
+const sessionOptions = {
+  cookieOptions: {
+    password: config.cookiePassword,
+    isSecure: isProd
+  }
+};
+
+// Google authentication settings
+const googleAuth = {
+  provider: 'google',
+  password: config.googleAuth.bellPassword,
+  clientId: config.googleAuth.googleClientID,
+  clientSecret: config.googleAuth.googleSecret,
+  isSecure: isProd
+}
+
 // Start the server
 const start = async () => {
-  await server.register(bell);
-
-  server.auth.strategy('google', 'bell', {
-    provider: 'google',
-    password: config.googleAuth.bellPassword,
-    clientId: config.googleAuth.googleClientID,
-    clientSecret: config.googleAuth.googleSecret,
-    isSecure: isProd
-  });
-
   try {
-    loginRoute(server, dbConn);
-    await server.start();
-    dbConn.end();
+    await server.register([
+      { plugin: yar, options: sessionOptions },
+      bell
+    ]);
+    server.auth.strategy('google', 'bell', googleAuth);
+    dbConn.then(async (conn) => {
+      loginRoute(server, conn);
+      await server.start();
+      conn.end();
+    });
   }
   catch (err) {
-    dbConn.end();
     console.log(err);
     process.exit(1);
   }

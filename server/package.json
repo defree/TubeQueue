@@ -25,15 +25,17 @@
   "devDependencies": {
     "@types/bell": "^9.1.0",
     "@types/hapi": "^17.0.12",
-    "@types/mysql": "^2.15.5",
+    "@types/mysql2": "github:types/npm-mysql2",
     "@types/uuid": "^3.4.3",
+    "@types/yar": "^9.0.3",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {
     "bell": "^9.3.0",
     "hapi": "^17.5.0",
-    "mysql": "^2.15.0",
-    "uuid": "^3.2.1"
+    "promise-mysql": "^3.2.1",
+    "uuid": "^3.2.1",
+    "yar": "^9.0.1"
   }
 }
