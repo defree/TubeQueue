@@ -49,7 +49,7 @@ const start = async () => {
     dbConn.then(async (conn) => {
       loginRoute(server, conn);
       await server.start();
-      conn.end();
+      // conn.end();
     });
   }
   catch (err) {
